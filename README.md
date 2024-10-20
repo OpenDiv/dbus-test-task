@@ -2,14 +2,14 @@
 Собрано под Arch Linux x86_64  
 Инструкция по сборке:  
 
-git clone https://https://github.com/OpenDiv/dbus-test-task
-sudo pacman -S qt5-base gcc sqlite
-
-cd ~/dbus-test-task/firstTask/
-sudo chmod +x build_files.sh
-./build_files.sh
-
-Затем из терминала/графического интерфейса запустить:  
+git clone https://github.com/OpenDiv/dbus-test-task  
+sudo pacman -S qt5-base gcc sqlite  
+  
+cd ~/dbus-test-task/  
+sudo chmod +x build_files.sh  
+./build_files.sh  
+  
+Затем из терминала или графического интерфейса запустить:  
 - ~/dbus-test-task/firstTask/qdbusTestTaskFirst  
 - ~/dbus-test-task/secondTask/qdbusTestTaskSecond  
 

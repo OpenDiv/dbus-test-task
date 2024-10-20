@@ -10,8 +10,8 @@ build_task() {
   cd - || exit 1
 }
 
-build_task "~/dbus-test-task/firstTask"
-build_task "~/dbus-test-task/secondTask"
-build_task "~/dbus-test-task/thirdTask"
+build_task "$HOME/dbus-test-task/firstTask/"
+build_task "$HOME/dbus-test-task/secondTask/"
+build_task "$HOME/dbus-test-task/thirdTask/"
 
 echo "Building completed"
