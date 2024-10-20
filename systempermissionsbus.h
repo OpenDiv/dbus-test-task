@@ -1,27 +1,30 @@
-#ifndef RECEIVER_H
-#define RECEIVER_H
+#ifndef SYSTEMPERMISSIONSBUS_H
+#define SYSTEMPERMISSIONSBUS_H
 
-#include <QtCore/qobject.h>
-#include <QCoreApplication>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusContext>
 #include <QDBusReply>
 #include <QDBusInterface>
-#include <QtCore/QDebug>
-#include <QFile>
 #include <QDir>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QFile>
+#include <QObject>
+
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 
+#define SERVICE_NAME "com.system.permissions"
+
 enum Permissions { SystemTime = 0 };
 
-class Receiver : public QObject, public QDBusContext
+class systemPermissionsBus : public QObject, public QDBusContext
 {
     Q_OBJECT
 public:
-    Receiver(QObject* parent = nullptr ) : QObject(parent)
+    systemPermissionsBus(QObject* parent = nullptr ) : QObject(parent)
     {
         qDebug()<<"Constructor worked, setupSqlTable() result: "<<setupSqlTable();
     }
@@ -67,6 +70,7 @@ private:
 public slots:
     bool checkApplicationHasPermission(QString applicationExecPath, int permissionEnumType)
     {
+        qDebug()<<"application has permission CALLED";
         QSqlQuery dataBaseQuery(dataBase);
         dataBaseQuery.prepare("SELECT COUNT(*) FROM "+tableName+" WHERE filepath = ? AND permission_type = ?");
         dataBaseQuery.addBindValue(applicationExecPath);
@@ -118,4 +122,4 @@ public slots:
     }
 };
 
-#endif // RECEIVER_H
+#endif // SYSTEMPERMISSIONSBUS_H

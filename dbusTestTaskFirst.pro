@@ -11,4 +11,4 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
-    receiver.h
+    systempermissionsbus.h

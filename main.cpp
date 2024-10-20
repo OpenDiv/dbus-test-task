@@ -1,10 +1,11 @@
 #include <QCoreApplication>
-#include <QtDBus/qdbusconnection.h>
-#include <QtDBus/QDBusContext>
+#include <QDBusConnection>
+#include <QDBusContext>
 #include <QDebug>
-#include "receiver.h"
 
-#define SERVICE_NAME "com.system.permissions"
+
+#include "systempermissionsbus.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -22,10 +23,10 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    Receiver receiveObj;
+    systemPermissionsBus permissionsBus;
 
-    if(!QDBusConnection::sessionBus().registerObject("/", &receiveObj, QDBusConnection::ExportAllSlots)) {
-        receiveObj.sendErrorReply(QDBusError::Failed, "Unable to register object");
+    if(!QDBusConnection::sessionBus().registerObject("/", &permissionsBus, QDBusConnection::ExportAllSlots)) {
+        permissionsBus.sendErrorReply(QDBusError::Failed, "Unable to register object");
         return 1;
     }
 
