@@ -8,10 +8,8 @@
 #include <QDBusMessage>
 #include <QDBusReply>
 #include <QDebug>
-#include <QDir>
 #include <QFile>
 #include <QObject>
-
 #include <QDateTime>
 
 #define SERVICE_NAME "com.system.time"
@@ -47,7 +45,7 @@ public slots:
     if (!reply.isValid()) {
       qDebug() << "Return: " << static_cast<quint64>(QDBusError::NoReply)
                << " [Invalid reply]";
-      return static_cast<quint64>(QDBusError::NoReply); // Возвращаем ошибку
+      return static_cast<quint64>(QDBusError::NoReply);
     }
 
     quint64 timestampMs =
@@ -57,7 +55,6 @@ public slots:
 
       qDebug() << "Access granted - returning timestamp: " << timestampMs;
       return timestampMs;
-      // Успешный ответ
     } else {
       qDebug() << "Return: " << static_cast<quint64>(QDBusError::AccessDenied)
                << " [Access denied]";
