@@ -14,7 +14,7 @@ sudo chmod +x build_files.sh
 - ~/dbus-test-task/secondTask/qdbusTestTaskSecond  
 
 Затем в терминале выполнить:  
-cd ~/dbus-test-task/thirdTask/
+cd ~/dbus-test-task/thirdTask/  
 ./thirdTask  
 
 
